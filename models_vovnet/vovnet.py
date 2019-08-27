@@ -73,20 +73,18 @@ class _OSA_module(nn.Module):
             OrderedDict(conv1x1(in_channel, concat_ch, module_name, 'concat')))
 
     def forward(self, x):
-        identity_feat = x
-        output = []
-        output.append(x)
+        output = [x]
         for layer in self.layers:
             x = layer(x)
             output.append(x)
 
         x = torch.cat(output, dim=1)
-        xt = self.concat(x)
+        x = self.concat(x)
 
         if self.identity:
-            xt = xt + identity_feat
+            x = x + output[0]
 
-        return xt
+        return x
 
 
 class _OSA_stage(nn.Sequential):
