@@ -26,7 +26,7 @@ model_names = model_names + sorted(name for name in models_vovnet.__dict__
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('data', metavar='DIR',
                     help='path to dataset')
-parser.add_argument('--arch', '-a', metavar='ARCH', default='vovnet69v2',
+parser.add_argument('--arch', '-a', metavar='ARCH', default='vovnet57',
                     #choices=model_names,
                     help='model architecture: ' +
                         ' | '.join(model_names) +
